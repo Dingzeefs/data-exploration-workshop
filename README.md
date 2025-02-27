@@ -1,6 +1,6 @@
 # README
 
-This repository contains a notebook and data for the workshop "VMs and Data Exploration" that is part of the Data Exploration semester of the Master of Applied Data Science at HAN University of Applied Sciences.
+This repository contains a notebook and data for the workshop "Collaboration" that is part of the Data Exploration semester of the Master of Applied Data Science at HAN University of Applied Sciences.
 
 ## Lesson goal
 
