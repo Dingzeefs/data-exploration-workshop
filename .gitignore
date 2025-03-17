@@ -14,3 +14,4 @@ wheels/
 .venv
 .vscode
 .Lesson_description_git.md
+.~*
