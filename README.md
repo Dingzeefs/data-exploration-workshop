@@ -1,46 +1,88 @@
-# README
+# Data Exploration Workshop - Collaboration
 
-This repository contains a notebook and data for the workshop "Collaboration" that is part of the Data Exploration semester of the Master of Applied Data Science at HAN University of Applied Sciences.
+This repository contains the code and data for the "Collaboration" workshop that is part of the Data Exploration semester of the Master of Applied Data Science at HAN University of Applied Sciences.
 
-## Lesson goal
+## Project Overview
 
-The student performs an exploration of a given data set and shares the process and results in such a way that they can be reproduced.
+This project explores a dataset containing a target variable and 100 feature variables. The goal is to identify the most relevant features through correlation analysis and create a processed dataset with only the most useful features.
 
-## Files
+## Directory Structure
 
-- This file :-)
-- A .gitignore file you can use in your own repositories (see below).
-- `data/raw/correlation_jngdc.csv` : the data file you will be using as source data.
+- `data/raw/`: Contains the original dataset (`correlation_jngdc.csv`)
+- `data/processed/`: Will contain the processed dataset with selected features
+- `exploration_[name].ipynb`: Jupyter notebook with the data exploration process
 
-## Preparation
+## Setup Instructions
 
-1. Install uv and create a new project containing jupyter, pandas, numpy, scikit-learn, statsmodels, matplotlib and seaborn:
+### Prerequisites
 
-`uv add pandas numpy matplotlib seaborn scikit-learn statsmodels ipykernel`. 
+- Python 3.8 or higher
+- uv (Python package manager)
 
-2. Before you make your first commit ensure you have a .gitignore file that prevents virtual environments and other files that are for local use only to be added to git. Copying the .gitignore file from the repository you're reading now is fine.
+### Installation
 
-3. Set up your project:
-   1. Create a directory "data" and below that two subdirectories "raw" and "processed". Remember that git does not store empty directories. Create empty .gitkeep files to work around this.
-   2. Download the file `data/raw/correlation_jngdc.csv` from the repository you're reading now to your own `data/raw/` directory.
-   3. Create a new notebook `exploration_[your_name_without_spaces].ipynb`.
-4. Create a REAME.md file. Use it to explain what a user needs to do to run your project. At the very least explain how to start the notebook server (either with `uv run --with jupyter jupyter lab` or by opening the project folder in VSCode).
-5. Commit your project to a public repository on GitHub.
+1. Clone this repository:
+   ```
+   git clone [repository-url]
+   cd [repository-name]
+   ```
 
-## Useful Pandas commands you may not have seen before
+2. Create and activate a virtual environment:
+   ```
+   uv venv
+   source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+   ```
 
-- To calculate correlations: `df.corr`
-- To create a new column with absolute values based on another column: `df['abs'] = df['col'].abs()` (remember that correlations can be both positive and negative!).
-- To drop a row based on a specific index value: `df.drop(labels='index_to_drop', axis='index)`.
-- To show the rows with the n highest values in a column: `df.nlargest(n, 'col')`.
+3. Install the required packages:
+   ```
+   uv pip sync requirements.txt
+   ```
 
-## The workshop
+### Dependency Management
 
-1. Make sure you've done all the steps listen under "Preparation" above.
-2. Open your notebook `exploration_[your_name_without_spaces].ipynb` and use it to explore the data set `data/raw/correlation_jngdc.csv` using the techniques you have learned so far and the techniques listed under "Useful Pandas commands you may not have seen before" above. This data set contains a single target variable (helpfully named "target") and 100 feature variables. Make sure your notebook provides information about the dataset that is useful to others that need to work with this file. 
-3. Turn the source data into a new data file that contains only the target variable and a few of the feature variables that are useful (at least 5). Save this data file in `data/processed`.
-4. Push your work to your repo. This repo should be public. 
-5. Exchange repos with one of your classmates. Divide the variables among the two of you. Each of you will perform a further exploration of the assigned variables and note the results in a notebook. Make sure each of you uses their own notebook to avoid merge conflicts.
-6. When you're both done, commit your work and push it (you will need to give your partner permissions to your repository on GitHub).
-7. Create a new notebook that contains all your work in one notebook.
+This project uses UV for dependency management with the following files:
 
+- `requirements.in`: Contains the high-level dependencies without version constraints
+- `requirements.txt`: Contains the locked dependencies with exact versions, generated from requirements.in
+
+To update the locked dependencies:
+```
+uv pip compile requirements.in --output-file requirements.txt
+```
+
+To add a new dependency:
+1. Add it to `requirements.in`
+2. Run `uv pip compile requirements.in --output-file requirements.txt`
+3. Run `uv pip sync requirements.txt`
+
+### Running the Notebook
+
+You can run the Jupyter notebook in one of two ways:
+
+#### Option 1: Using uv
+
+```
+uv run --with jupyter jupyter lab
+```
+
+#### Option 2: Using VSCode
+
+1. Open the project folder in VSCode
+2. Select the Python interpreter from the virtual environment (.venv)
+3. Open the notebook file and run it using VSCode's built-in Jupyter support
+
+## Data Analysis Process
+
+1. Load the raw data from `data/raw/correlation_jngdc.csv`
+2. Explore the dataset structure and calculate correlations
+3. Identify the most relevant features based on correlation with the target variable
+4. Create a processed dataset with only the selected features
+5. Save the processed dataset to `data/processed/`
+
+## Collaboration
+
+This project is designed for collaboration. Partners can:
+1. Fork or clone the repository
+2. Create their own exploration notebooks
+3. Commit and push changes
+4. Merge findings into a final notebook 

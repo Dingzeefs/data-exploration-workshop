@@ -1,0 +1,11 @@
+# Core data science packages
+pandas
+numpy
+matplotlib
+seaborn
+scikit-learn
+statsmodels
+
+# Jupyter support
+ipykernel
+jupyter 
